@@ -39,9 +39,12 @@
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp"
+        android:onClick="dateOnClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/studyGroupName" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
