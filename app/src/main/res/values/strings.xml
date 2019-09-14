@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HelloWorldApp</string>
+    <string name="title_activity_button_test">ButtonTest</string>
 </resources>
