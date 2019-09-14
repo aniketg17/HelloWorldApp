@@ -15,12 +15,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Button btnSubmit = (Button) findViewById(R.id.button);
+        //Button btnSubmit = (Button) findViewById(R.id.button);
 
     }
 
-    public void InformationPageOnClick(View v){
-        Intent intObj = new Intent(MainActivity.this,InformationPage.class);
+    public void CreateGroupPageOnClick(View v){
+        Intent intObj = new Intent(this, CreateGroupPage.class);
         startActivity(intObj);
     }
 }
