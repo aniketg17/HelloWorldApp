@@ -26,8 +26,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class MainActivity extends AppCompatActivity {
+
 
     // TAG is for show some tag logs in LOG screen.
     public static final String TAG = "MainActivity";
@@ -157,8 +161,11 @@ public class MainActivity extends AppCompatActivity {
 
                         if (AuthResultTask.isSuccessful()){
 
+
 // Getting Current Login user details.
                             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+
 
 // Showing Log out button.
                             SignOutButton.setVisibility(View.VISIBLE);
