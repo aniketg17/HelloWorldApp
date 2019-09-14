@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HelloWorldApp</string>
+    <string name="button">Information Page</string>
 </resources>
