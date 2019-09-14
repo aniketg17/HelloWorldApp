@@ -2,9 +2,11 @@ package com.example.helloworldapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,18 +21,25 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
     // TAG is for show some tag logs in LOG screen.
@@ -60,6 +69,22 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DocumentReference docRef = db.collection("users").document("me");
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
 
 
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
@@ -103,14 +128,35 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 UserSignInMethod();
+                //FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+//                Map<String, Object> city = new HashMap<>();
+//                city.put("name", "Los Angeles");
+//                city.put("state", "CA");
+//                city.put("country", "USA");
+////
+////                db.collection("hi").document("hello").set(city);
+//                db.collection("users").document().set(city);
+
+
 
             }
         });
+
+
 
 // Adding Click Listener to User Sign Out button.
         SignOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+//                Context context = getApplicationContext();
+//                CharSequence text = firebaseUser.getUid();
+//                int duration = Toast.LENGTH_SHORT;
+//
+//                Toast toast = Toast.makeText(context, text, duration);
+//                toast.show();
 
                 UserSignOutFunction();
 
@@ -161,9 +207,11 @@ public class MainActivity extends AppCompatActivity {
 
                         if (AuthResultTask.isSuccessful()){
 
-
+                            Map<String, Object> user = new HashMap<>();
 // Getting Current Login user details.
                             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                            user.put("email", firebaseUser.getEmail());
+                            db.collection("users").document(firebaseUser.getUid()).set(user);
 
 
 
