@@ -7,9 +7,11 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/longstyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
+        android:onClick="getHTTPSPlease"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -21,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="108dp"
         android:onClick="CreateGroupPageOnClick"
-        android:text="@string/create_group_page"
+        android:text="create_group_page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

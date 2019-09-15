@@ -6,45 +6,126 @@
     android:layout_height="match_parent"
     tools:context=".CreateGroupPage">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+    <Spinner
+        android:id="@+id/selectCourseList"
+        android:layout_width="407dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
         android:text="PlaceHolder select course"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <EditText
         android:id="@+id/studyGroupName"
-        android:layout_width="360dp"
+        android:layout_width="fill_parent"
         android:layout_height="46dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Name Of Study Group"
+        android:hint="Create Name Of Study Group"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/selectCourseList" />
 
-    <TextView
-        android:id="@+id/studyDate"
-        android:layout_width="176dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="324dp"
+        android:layout_height="46dp"
+        android:ems="10"
+        android:hint="Search"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="buttonIsClicked"
+        android:text="SEARCH"
+        app:layout_constraintBottom_toBottomOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/timeTextBoxStart"
+        android:layout_width="141dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="44dp"
+        android:ems="10"
+        android:hint="Start Time"
+        android:inputType="textPersonName"
         android:textAlignment="center"
-        android:textSize="18sp"
-        android:onClick="dateOnClick"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/studyGroupName" />
 
+    <EditText
+        android:id="@+id/timeTextBoxEnd"
+        android:layout_width="141dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:hint="End Time"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/timeTextBoxStart"
+        app:layout_constraintTop_toBottomOf="@+id/studyGroupName" />
+
+    <EditText
+        android:id="@+id/locationTextBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Input Address"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeTextBoxStart" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="150dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="24dp"
+        android:text="Description"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationTextBox" />
+
+    <EditText
+        android:id="@+id/descriptionTextBox"
+        android:layout_width="357dp"
+        android:layout_height="190dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="add your description here"
+        android:inputType="textMultiLine"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonOnBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.057" />
+
+    <Button
+        android:id="@+id/buttonOnBottom"
+        android:layout_width="356dp"
+        android:layout_height="50dp"
+        android:onClick="saveOnClick"
+        android:text="CLICK HERE TO CREATE"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
