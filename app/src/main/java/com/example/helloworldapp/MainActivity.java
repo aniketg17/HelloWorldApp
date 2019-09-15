@@ -3,11 +3,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
+<<<<<<< HEAD
 import androidx.annotation.NonNull;
+=======
+>>>>>>> parent of 6173198... Finished Create Page
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
     // TextView to Show Login User Email and Name.
 
+=======
+
+public class MainActivity extends AppCompatActivity {
+>>>>>>> parent of 6173198... Finished Create Page
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,8 +153,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+<<<<<<< HEAD
 // Adding Click Listener to User Sign Out button.
 
+=======
+        //Button btnSubmit = (Button) findViewById(R.id.button);
+>>>>>>> parent of 6173198... Finished Create Page
 
     }
 
@@ -179,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+<<<<<<< HEAD
 
     public void FirebaseUserAuth(GoogleSignInAccount googleSignInAccount) {
 
@@ -230,3 +242,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+=======
+}
+>>>>>>> parent of 6173198... Finished Create Page
