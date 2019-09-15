@@ -2,13 +2,13 @@ package com.example.helloworldapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.auth.api.Auth;
@@ -18,11 +18,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -56,12 +52,14 @@ public class MainActivity extends AppCompatActivity {
 
     // Sing out button.
     Button SignOutButton;
+    TextView emailBox;
+    EditText inputEmailId;
+
 
     // Google Sign In button .
     com.google.android.gms.common.SignInButton signInButton;
 
     // TextView to Show Login User Email and Name.
-    TextView LoginUserName, LoginUserEmail;
 
 
     @Override
@@ -85,15 +83,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
 
-        SignOutButton= (Button) findViewById(R.id.sign_out);
+        SignOutButton= (Button) findViewById(R.id.continueButton);
 
-        LoginUserName = (TextView) findViewById(R.id.textViewName);
+        emailBox= (TextView) findViewById(R.id.emailText);
+        inputEmailId= (EditText) findViewById(R.id.inputEmail);
 
-        LoginUserEmail = (TextView) findViewById(R.id.textViewEmail);
+
+        emailBox.setVisibility(View.INVISIBLE);
+        inputEmailId.setVisibility(View.INVISIBLE);
+
+
+
+
+
 
         signInButton = (com.google.android.gms.common.SignInButton)findViewById(R.id.sign_in_button);
 
@@ -101,8 +105,6 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
 // Hiding the TextView on activity start up time.
-        LoginUserEmail.setVisibility(View.GONE);
-        LoginUserName.setVisibility(View.GONE);
 
 // Creating and Configuring Google Sign In object.
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -158,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 //                Toast toast = Toast.makeText(context, text, duration);
 //                toast.show();
 
-                UserSignOutFunction();
+                Continue();
 
             }
         });
@@ -217,19 +219,17 @@ public class MainActivity extends AppCompatActivity {
 
 // Showing Log out button.
                             SignOutButton.setVisibility(View.VISIBLE);
+                            emailBox.setVisibility(View.VISIBLE);
+                            inputEmailId.setVisibility(View.VISIBLE);
 
 // Hiding Login in button.
                             signInButton.setVisibility(View.GONE);
 
 // Showing the TextView.
-                            LoginUserEmail.setVisibility(View.VISIBLE);
-                            LoginUserName.setVisibility(View.VISIBLE);
 
 // Setting up name into TextView.
-                            LoginUserName.setText("NAME = "+ firebaseUser.getDisplayName().toString());
 
 // Setting up Email into TextView.
-                            LoginUserEmail.setText("Email = "+ firebaseUser.getEmail().toString());
 
                         }else {
                             Toast.makeText(MainActivity.this,"Something Went Wrong",Toast.LENGTH_LONG).show();
@@ -238,33 +238,18 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    public void UserSignOutFunction() {
+    public void Continue() {
 
 // Sign Out the User.
-        firebaseAuth.signOut();
 
-        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(@NonNull Status status) {
-
-// Write down your any code here which you want to execute After Sign Out.
-
-// Printing Logout toast message on screen.
-                        Toast.makeText(MainActivity.this, "Logout Successfully", Toast.LENGTH_LONG).show();
-
-                    }
-                });
 
 // After logout Hiding sign out button.
-        SignOutButton.setVisibility(View.GONE);
-
-// After logout setting up email and name to null.
-        LoginUserName.setText(null);
-        LoginUserEmail.setText(null);
-
-// After logout setting up login button visibility to visible.
-        signInButton.setVisibility(View.VISIBLE);
+//        SignOutButton.setVisibility(View.GONE);
+//
+//// After logout setting up email and name to null.
+//
+//// After logout setting up login button visibility to visible.
+//        signInButton.setVisibility(View.VISIBLE);
     }
 
 }
