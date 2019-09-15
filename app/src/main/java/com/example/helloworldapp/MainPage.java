@@ -1,10 +1,10 @@
 package com.example.helloworldapp;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class MainPage extends AppCompatActivity {
 
@@ -13,7 +13,7 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
     }
-//    public void createPageOnClick(View V)
+  //  public void createPageOnClick(View V)
     {
 //        Intent intent = new Intent(this,);
 //        startactivity();
