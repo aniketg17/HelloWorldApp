@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public GoogleApiClient googleApiClient;
 
     // Sing out button.
-    Button SignOutButton;
+    Button Continue;
     TextView emailBox;
     EditText inputEmailId;
 
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         });
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
 
-        SignOutButton= (Button) findViewById(R.id.continueButton);
+        Continue= (Button) findViewById(R.id.continueButton);
 
         emailBox= (TextView) findViewById(R.id.emailText);
         inputEmailId= (EditText) findViewById(R.id.inputEmail);
@@ -147,23 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 // Adding Click Listener to User Sign Out button.
-        SignOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-
-//                Context context = getApplicationContext();
-//                CharSequence text = firebaseUser.getUid();
-//                int duration = Toast.LENGTH_SHORT;
-//
-//                Toast toast = Toast.makeText(context, text, duration);
-//                toast.show();
-
-                Continue();
-
-            }
-        });
 
     }
 
@@ -218,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 // Showing Log out button.
-                            SignOutButton.setVisibility(View.VISIBLE);
+                            Continue.setVisibility(View.VISIBLE);
                             emailBox.setVisibility(View.VISIBLE);
                             inputEmailId.setVisibility(View.VISIBLE);
 
@@ -238,18 +222,11 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    public void Continue() {
+    public void Continue(View v) {
 
-// Sign Out the User.
+        Intent intObj = new Intent(this, MainPage.class);
+        startActivity(intObj);
 
-
-// After logout Hiding sign out button.
-//        SignOutButton.setVisibility(View.GONE);
-//
-//// After logout setting up email and name to null.
-//
-//// After logout setting up login button visibility to visible.
-//        signInButton.setVisibility(View.VISIBLE);
     }
 
 }

@@ -24,6 +24,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="32dp"
         android:text="Continue"
+        android:onClick="Continue"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
