@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        txt = (TextView) findViewById(R.id.longstyle);
-        queue = Volley.newRequestQueue(this);
-        url ="http://api.purdue.io/odata/Courses?$filter=contains(Title, 'database')";
+//        txt = (TextView) findViewById(R.id.longstyle);
+//        queue = Volley.newRequestQueue(this);
+//        url ="http://api.purdue.io/odata/Courses?$filter=contains(Title, 'database')";
 
     }
 
@@ -48,33 +48,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     ArrayList<String> gg;
-    public void getHTTPSPlease(View v){
-        JsonObjectRequest arrReq = new JsonObjectRequest( url,null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        //txt.setText("GOT RESPONSE");
-                        try{
-                            gg=new ArrayList<String>();
-                            JSONArray a = response.getJSONArray("value");
-                            for(int i=0; i<a.length();i++){
-                                JSONObject g=a.getJSONObject(i);
-                                gg.add(g.getString("Number") +": "+ g.getString("Title"));
-                                Log.i("f",g.getString("Number") +": "+ g.getString("Title"));
-                            }
-                        }catch(JSONException e){
-                            //to be done later
-                        }
-
-                    }
-                },
-
-            new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    // txt.setText("NO");
-                }
-        });
-        queue.add(arrReq);
-    }
+//    public void getHTTPSPlease(View v){
+//        JsonObjectRequest arrReq = new JsonObjectRequest( url,null,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        //txt.setText("GOT RESPONSE");
+//                        try{
+//                            gg=new ArrayList<String>();
+//                            JSONArray a = response.getJSONArray("value");
+//                            for(int i=0; i<a.length();i++){
+//                                JSONObject g=a.getJSONObject(i);
+//                                gg.add(g.getString("Number") +": "+ g.getString("Title"));
+//                                Log.i("f",g.getString("Number") +": "+ g.getString("Title"));
+//                            }
+//                        }catch(JSONException e){
+//                            //to be done later
+//                        }
+//
+//                    }
+//                },
+//
+//            new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(VolleyError error) {
+//                    // txt.setText("NO");
+//                }
+//        });
+//        queue.add(arrReq);
+//    }
 }
