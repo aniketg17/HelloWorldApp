@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> gg;
     public void getHTTPSPlease(View v){
-        JsonObjectRequest arrReq = new JsonObjectRequest(Request.Method.GET, url,
+        JsonObjectRequest arrReq = new JsonObjectRequest( url,null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

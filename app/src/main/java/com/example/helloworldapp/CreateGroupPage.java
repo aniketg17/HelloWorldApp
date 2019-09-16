@@ -104,7 +104,7 @@ public class CreateGroupPage extends AppCompatActivity implements AdapterView.On
     public ArrayList<String> getHTTPSRequest(String url, RequestQueue q){
         final ArrayList<String> out = new ArrayList<String>();//Initialize ArrayList for output
 
-        JsonObjectRequest arrReq = new JsonObjectRequest(Request.Method.GET, url,
+        JsonObjectRequest arrReq = new JsonObjectRequest( url,null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
